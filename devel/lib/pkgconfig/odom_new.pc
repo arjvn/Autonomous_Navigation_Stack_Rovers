@@ -1,0 +1,8 @@
+prefix=/home/arc/groot_ws/devel
+
+Name: odom_new
+Description: Description of odom_new
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

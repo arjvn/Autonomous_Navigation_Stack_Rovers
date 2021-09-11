@@ -1,0 +1,20 @@
+digraph G {
+"odom" -> "camera_imu_optical_frame"[label="Broadcaster: /imu_filter_node\nAverage rate: 355.937 Hz\nMost recent transform: 3231044012.236 ( -1615520194.290 sec old)\nBuffer length: 0.702 sec\n"];
+"loc_map" -> "odom"[label="Broadcaster: /amcl\nAverage rate: 11.568 Hz\nMost recent transform: 1615523817.774 ( 0.172 sec old)\nBuffer length: 0.605 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /ekf_se\nAverage rate: 31.495 Hz\nMost recent transform: 1615523817.326 ( 0.620 sec old)\nBuffer length: 0.667 sec\n"];
+"camera_link" -> "camera_depth_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "camera_link"[label="Broadcaster: /baselink_to_rs\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_depth_frame" -> "camera_depth_optical_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_link" -> "camera_color_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_color_frame" -> "camera_color_optical_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_link" -> "camera_gyro_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_link" -> "camera_accel_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_accel_frame" -> "camera_accel_optical_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"nav_map" -> "loc_map"[label="Broadcaster: /nav_map_to_loc_map\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "velodyne"[label="Broadcaster: /baselink_to_3D_lidar\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "gps"[label="Broadcaster: /baselink_to_gps\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1615523817.946 sec old)\nBuffer length: 0.000 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1615523817.946"[ shape=plaintext ] ;
+ }->"nav_map";
+}

@@ -1,0 +1,8 @@
+prefix=/home/arc/groot_ws/install
+
+Name: qt_gui_py_common
+Description: Description of qt_gui_py_common
+Version: 0.4.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

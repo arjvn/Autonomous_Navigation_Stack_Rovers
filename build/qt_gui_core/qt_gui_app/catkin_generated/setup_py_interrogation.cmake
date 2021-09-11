@@ -1,0 +1,7 @@
+set(qt_gui_app_SETUP_PY_SETUP_MODULE "setuptools")
+set(qt_gui_app_SETUP_PY_VERSION "0.4.2")
+set(qt_gui_app_SETUP_PY_SCRIPTS "")
+set(qt_gui_app_SETUP_PY_PACKAGES "")
+set(qt_gui_app_SETUP_PY_PACKAGE_DIRS "")
+set(qt_gui_app_SETUP_PY_MODULES "")
+set(qt_gui_app_SETUP_PY_MODULE_DIRS "")

@@ -1,0 +1,8 @@
+prefix=/home/arc/groot_ws/devel
+
+Name: qt_gui_app
+Description: Description of qt_gui_app
+Version: 0.4.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
