@@ -1,0 +1,13 @@
+local_costmap:
+  global_frame: odom ########change to global?#######
+  robot_base_frame: base_link
+
+  update_frequency: 20.0 #original 5.0
+  publish_frequency: 20.0 #original 5.0
+  static_map: false
+  rolling_window: true
+  # Setting the "rolling_window" parameter to true means that the costmap 
+  # will remain centered around the robot as the robot moves through the world
+  width: 10.0 #meters
+  height: 10.0 #meters
+  resolution: 0.01 #meters/cell

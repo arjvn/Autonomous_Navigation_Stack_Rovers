@@ -1,0 +1,29 @@
+TrajectoryPlannerROS:
+  max_vel_x: 1.0
+  min_vel_x: -0.3 # should we allow it to be negative? so we can reverse
+  max_vel_theta: 0.7
+  min_vel_theta: -0.7 #radians/sec
+  min_in_place_vel_theta: 0.8 #radians/sec
+
+  acc_lim_theta: 1.5
+  acc_lim_x: 0.5
+  acc_lim_y: 0
+
+  holonomic_robot: false # toggle strafing velocity commands
+
+  # Goal tolerance parameters
+  xy_goal_tolerance: 0.1
+  yaw_goal_tolerance: 0.1
+  latch_xy_goal_tolerance: true   #if true then the robot will simply reach the position and rotate to the desired yaw angle
+#TrajectoryPlannerROS:
+#  max_vel_x: 0.8
+#  min_vel_x: 0.1 # should we allow it to be negative? so we can reverse
+#  max_vel_theta: 0.4
+#  min_vel_theta: -0.4 #radians/sec
+#  min_in_place_vel_theta: 0 #radians/sec
+
+#  acc_lim_theta: 3.2
+#  acc_lim_x: 2.5
+#  acc_lim_y: 2.5
+
+#  holonomic_robot: false # toggle strafing velocity commands

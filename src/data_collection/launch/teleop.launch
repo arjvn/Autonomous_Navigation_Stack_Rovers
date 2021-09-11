@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find teleop_twist_joy)/launch/teleop.launch"></include>
+  <node name="arduino1" pkg="rosserial_arduino" type="serial_node.py" respawn="true" />
+  <node name="arduino2" pkg="rosserial_arduino" type="serial_node2.py" respawn="true" />
+  <node name="arduino3" pkg="rosserial_arduino" type="serial_node3.py" respawn="true" />
+</launch>

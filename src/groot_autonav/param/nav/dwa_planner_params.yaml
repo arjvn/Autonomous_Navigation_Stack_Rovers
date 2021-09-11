@@ -1,0 +1,53 @@
+DWAPlannerROS:
+  # From Wheelchair configuration parameters
+  holonomic_robot: false
+  max_vel_x: 0.2
+  min_vel_x: 0.1
+
+  max_vel_y: 0     # Because its Differenctial Drive it is 0
+  min_vel_y: 0
+
+  # config for strait line movements
+  max_vel_trans: 0.8
+  min_vel_trans: 0.1
+  trans_stopped_vel: 0.01
+
+  max_vel_theta: 0.5
+  min_vel_theta: 0.1
+  theta_stopped_vel: 0.4
+
+  acc_lim_th: 1    # The rotational acceleration limit of the robot in rad/ss
+  acc_lim_x: 1    # The x acceleration limit of the robot in m/ss
+  acc_lim_y: 0     # The y acceleration limit of the robot in m/ss, 0 - DiffDrive robot
+
+  # Forward Simulation Parameters
+  use_dwa: true
+  sim_time: 2
+  vx_samples: 50
+  vy_samples: 1       # At least 1 needed but DiffDrive does not need it
+  vtheta_samples: 60
+  sim_granularity: 0.05           # Step size to take between points on trajectory
+
+  # Trajectory Scoring Parameters
+  goal_distance_bias: 32.0        # weight of the goal reaching
+  path_distance_bias: 20.0        # weight of how stick to global plan
+  occdist_scale: 0.02             # weight of obstacle avoidance
+  forward_point_distance: 0.3     # Distance from the center point of the robot to place additional scoring point
+
+  stop_time_buffer: 0.3           # time that a robot must stop before colliding
+  oscillation_reset_dist: 0.05    # travel distance before reset oscillation flag
+  scaling_speed: 1                # absolute velocity at which to start scaling the footprint
+  max_scaling_factor: 1           # scale factor of footprint at speed.
+
+  # Goal tolerance parameters
+  xy_goal_tolerance: 0.3
+  yaw_goal_tolerance: 0.3
+  latch_xy_goal_tolerance: true   #if true then the robot will simply reach the position and rotate to the desired yaw angle
+
+  #Debugging
+  publish_traj_pc: true
+  publish_cost_grid_pc: true
+
+
+
+

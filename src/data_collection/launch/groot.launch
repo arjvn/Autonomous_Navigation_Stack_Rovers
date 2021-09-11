@@ -1,0 +1,12 @@
+<launch>
+  <include file="$(find data_collection)/launch/rs_groot.launch"></include>
+  <include file="$(find data_collection)/launch/VLP16_custom.launch"></include> 
+  <include file="$(find ublox_gps)/launch/ublox_device_new.launch"></include>
+  <include file="$(find ntrip_ros)/launch/ntrip.launch"></include>
+  <include file="$(find teleop_twist_joy)/launch/teleop.launch"></include>
+  <node name="arduino1" pkg="rosserial_arduino" type="serial_node.py" respawn="true" />
+  <node name="arduino2" pkg="rosserial_arduino" type="serial_node2.py" respawn="true" />
+  <node name="arduino3" pkg="rosserial_arduino" type="serial_node3.py" respawn="true" />
+  <node name="odom" pkg="odom" type="odom_node" respawn="true" />
+  <node name="odom_new" pkg="odom_new" type="odom_new_node" respawn="true" />
+</launch>

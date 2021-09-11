@@ -1,0 +1,7 @@
+<launch>
+    <node name="baselink_to_3D_lidar" pkg="tf2_ros" type="static_transform_publisher" args="0.025 0 0.66 0 0 0 base_link velodyne" output="screen"/>
+    <node name="baselink_to_realsense" pkg="tf2_ros" type="static_transform_publisher" args="-0.365 0 0.42 0 0 0 base_link gps" output="screen"/>
+    <node name="baselink_to_gps" pkg="tf2_ros" type="static_transform_publisher" args="0.435 0 0.23 -1.5708 0 3.1416 base_link camera_imu_optical_frame" output="screen"/>
+    <node name="realsenseimu_to_imuconvention" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 1.5708 0 3.1416  camera_imu_optical_frame oriented_imu_frame" output="screen"/>
+
+</launch>

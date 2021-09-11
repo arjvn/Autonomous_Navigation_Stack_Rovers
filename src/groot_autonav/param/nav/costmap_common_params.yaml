@@ -1,0 +1,17 @@
+obstacle_range: 10.0 #range within which to add obstacle
+raytrace_range: 5.0 #range within which to clear obstacle, set to 50 in ros_whill... 30?
+footprint: [[0.40, 0.80], [0.40, -0.80], [-0.40, -0.80], [-0.40, 0.80]] #center of the robot is assumed to be at (0.0, 0.0) 
+#footprint: [[0.40, 0.60], [0.40, -0.60], [-0.40, -0.60], [-0.40, 0.60]] #center of the robot is assumed to be at (0.0, 0.0) 
+#footprint: [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+#robot_radius: ir_of_robot #if robot is circular
+inflation_radius: 0.3
+
+# add and test PointCloud from realsense
+observation_sources: point_cloud_sensor_flat 
+# laser_scan_sensor: {sensor_frame: velodyne, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+#point_cloud_sensor: {sensor_frame: velodyne, data_type: PointCloud2, topic: /velodyne_points, marking: true, clearing: true}
+
+point_cloud_sensor_flat: {sensor_frame: velodyne, data_type: LaserScan, topic: /local_scan, marking: true, clearing: true}
+realsense_scan: {sensor_frame: camera_link, data_type: LaserScan, topic: /realsense_scan, marking: true, clearing: true}
+# "marking" and "clearing" parameters determine whether the sensor will be used to add obstacle information to the costmap, clear obstacle information from the costmap
+cost_scaling_factor: 2.0  # exponential rate at which the obstacle cost drops off (default: 10)

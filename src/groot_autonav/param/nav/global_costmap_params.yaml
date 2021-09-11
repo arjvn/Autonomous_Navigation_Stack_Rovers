@@ -1,0 +1,5 @@
+global_costmap:
+  global_frame: nav_map #frame in which the global costmap should be built
+  robot_base_frame: base_link # frame the costmap should reference for the robot base
+  update_frequency: 10.0
+  static_map: true

@@ -1,0 +1,65 @@
+<launch>
+
+    <!-- Static Transforms -->
+    <node name="baselink_to_3D_lidar" pkg="tf2_ros" type="static_transform_publisher" args="0.025 0 0.66 0 0 0 base_link velodyne" output="screen"/>
+    <node name="baselink_to_gps" pkg="tf2_ros" type="static_transform_publisher" args="-0.365 0 0.42 0 0 0 base_link gps" output="screen"/>
+    <node name="baselink_to_realsense" pkg="tf2_ros" type="static_transform_publisher" args="0.435 0 0.23 -1.5708 0 3.1416 base_link camera_imu_optical_frame" output="screen"/>
+    <!-- run pointcloud_to_laserscan node -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan" output="screen">
+
+        <!-- cloud to transform -->
+        <remap from="cloud_in" to="/velodyne_points"/>
+        <rosparam>
+            <!-- target_frame: velodyne_lidar  -->
+            target_frame: velodyne
+            transform_tolerance: 0.01
+            min_height: 0.0
+            max_height: 1.0
+
+            angle_min: -3.14 # -M_PI
+            angle_max: 3.14 # M_PI
+            angle_increment: 0.004 # M_PI/360.0
+            scan_time: 0.3333
+            range_min: 0.45
+            range_max: 15.0
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 0
+        </rosparam>
+        <!-- <remap from="scan" to="/flattened_scan"/> -->
+    </node>
+
+    <!-- <node name="baselink_to_3D_lidar" pkg="tf2_ros" type="static_transform_publisher" args="0.17 0 0.61 0 0 0 base_link velodyne_lidar" output="screen"/> -->
+
+    <!-- laser odometry -->
+    <node name="laser_odom" pkg="rtabmap_ros" type="icp_odometry">
+        <!-- <remap from="scan_cloud" to="/velodyne_points"/> -->
+        <!-- <remap from="scan" to="/flattened_scan"/> -->
+        <remap from="odom" to="/laser_odom"/>
+    </node>
+
+    <!-- amcl -->
+      <node pkg="amcl" type="amcl" name="amcl" output="screen">
+        <param name="odom_model_type" value="diff"/>
+        <!-- <remap from="scan" to="/flattened_scan"/> -->
+        <!-- <remap from="odom" to="/laser_odom"/> -->
+        <param name="odom_frame_id" value="odom" />
+        <param name="base_frame_id" value="base_link" />
+        <param name="global_frame_id" value="map" />
+    </node>
+
+      <!-- Map Server -->
+  <node pkg="map_server" type="map_server" name="map_server" output="screen" args="/home/arc/groot_ws/maps/map_19_groot_Zfilter1.2.yaml">
+    <param name="frame_id" value="map"/>
+  </node>
+
+    <!-- Rviz -->
+<arg name="rviz"    default="true" />
+<arg name="rviz_file" default="/home/arc/.rviz/Groot_ekf.rviz"/>    
+<node pkg="rviz" type="rviz" name="$(anon rviz)" args="-d $(arg rviz_file)" output="screen" if="$(arg rviz)"/>
+
+</launch>
